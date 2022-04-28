@@ -5,6 +5,7 @@ import telia.hw.domain.horse.HorseInfoRequest;
 import telia.hw.domain.horse.HorseService;
 import telia.hw.domain.race.RaceInfoRequest;
 import telia.hw.domain.race.RaceService;
+import telia.hw.domain.race_result.RaceResultResponse;
 import telia.hw.domain.user.UserInfoRequest;
 import telia.hw.domain.user.UserService;
 
@@ -26,8 +27,8 @@ public class HorseRaceService {
         userService.addNewUser(request);
     }
 
-    public void addNewRace(RaceInfoRequest request) {
-        raceService.addNewRace(request);
+    public RaceResultResponse addNewRace(RaceInfoRequest request) {
+       return raceService.addNewRace(request);
     }
 
     public void addNewHorse(HorseInfoRequest request) {
