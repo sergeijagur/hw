@@ -18,8 +18,8 @@ public class User {
     @Column(name = "first_name", nullable = false, length = 50)
     private String firstName;
 
-    @Column(name = "larst_name", nullable = false, length = 50)
-    private String larstName;
+    @Column(name = "last_name", nullable = false, length = 50)
+    private String lastName;
 
     @Column(name = "username", nullable = false, length = 50)
     private String username;

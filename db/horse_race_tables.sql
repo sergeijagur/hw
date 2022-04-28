@@ -34,7 +34,7 @@ CREATE TABLE race_result (
 CREATE TABLE "user" (
     id serial  NOT NULL,
     first_name varchar(50)  NOT NULL,
-    larst_name varchar(50)  NOT NULL,
+    last_name varchar(50)  NOT NULL,
     username varchar(50)  NOT NULL,
     password varchar(50)  NOT NULL,
     CONSTRAINT user_pk PRIMARY KEY (id)

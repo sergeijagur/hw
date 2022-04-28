@@ -1,4 +1,4 @@
-INSERT INTO public."user" (id, first_name, larst_name, username, password)
+INSERT INTO public."user" (id, first_name, last_name, username, password)
 VALUES (DEFAULT, 'Sergei', 'Jagur', 'sergeijagur', 'Password123');
 
 INSERT INTO public.race (id, name, place, date)
