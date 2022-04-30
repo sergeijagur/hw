@@ -21,6 +21,8 @@ public class HorseRaceController {
     @Resource
     private HorseRaceService horseRaceService;
 
+
+
     @PostMapping("/new-user")
     @Operation(summary = "Add new user")
     public void addNewUser(@RequestBody UserInfoRequest request) {horseRaceService.addNewUser(request);
@@ -28,7 +30,7 @@ public class HorseRaceController {
 
     @PostMapping("/new-race")
     @Operation(summary = "Add new race")
-    public RaceResultResponse addNewRace(@Valid @RequestBody RaceInfoRequest request) {
+    public Integer addNewRace(@Valid @RequestBody RaceInfoRequest request) {
         return horseRaceService.addNewRace(request);
     }
 
@@ -44,14 +46,11 @@ public class HorseRaceController {
         return horseRaceService.findAllHorses();
     }
 
-//    @PostMapping("/race-horses")
-//    @Operation(summary = "Add horses to race")
-//    public List<RaceHorse> addRaceHorses(Array [] horseId) {
-//        Horse horse = new Horse();
-//        ArrayList<Object> objects = new ArrayList<>();
-//        objects.set(0, horse.getId());
-//        return null;
-//    }
+    @PostMapping("/bet")
+    @Operation(summary = "Add horses to race")
+    public Integer putBetOnHorse(RaceAndBetRequest request) {
+        return horseRaceService.putBetOnHorse(request);
+    }
 
 
 

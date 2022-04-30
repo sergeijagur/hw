@@ -30,7 +30,7 @@ public class HorseRaceService {
         userService.addNewUser(request);
     }
 
-    public RaceResultResponse addNewRace(RaceInfoRequest request) {
+    public Integer addNewRace(RaceInfoRequest request) {
        return raceService.addNewRace(request);
     }
 
@@ -40,5 +40,9 @@ public class HorseRaceService {
 
     public List<HorseInfoResponse> findAllHorses() {
         return horseService.findAllHorses();
+    }
+
+    public Integer putBetOnHorse(RaceAndBetRequest request) {
+        return raceService.putBetOnHorse(request);
     }
 }

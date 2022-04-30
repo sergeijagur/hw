@@ -13,5 +13,4 @@ public class RaceInfoRequest implements Serializable {
     private final String place;
     private final LocalDate date;
 
-    private final ArrayList raceHorses;
 }
