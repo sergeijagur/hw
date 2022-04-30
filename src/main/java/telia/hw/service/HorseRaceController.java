@@ -46,17 +46,10 @@ public class HorseRaceController {
         return horseRaceService.findAllHorses();
     }
 
-    @PostMapping("/asd")
-    public void test(@RequestBody RaceAndBetRequest request) {
-        horseRaceService.test(request);
+    @PostMapping("/bet")
+    @Operation(summary = "Add horses to race")
+    public Integer putBetOnHorse(@RequestBody RaceAndBetRequest request) {
+       return horseRaceService.putBetOnHorse(request);
     }
-
-//    @PostMapping("/bet")
-//    @Operation(summary = "Add horses to race")
-//    public Integer putBetOnHorse(@RequestBody RaceAndBetRequest request) {
-//        return horseRaceService.putBetOnHorse(request);
-//    }
-
-
 
 }

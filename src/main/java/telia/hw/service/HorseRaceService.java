@@ -42,11 +42,8 @@ public class HorseRaceService {
         return horseService.findAllHorses();
     }
 
-    public Integer putBetOnHorse(RaceAndBetRequest request) {
-        return raceService.putBetOnHorse(request);
-    }
 
-    public void test(RaceAndBetRequest request) {
-        raceService.test(request);
+    public Integer putBetOnHorse(RaceAndBetRequest request) {
+       return raceService.putBetOnHorse(request);
     }
 }
