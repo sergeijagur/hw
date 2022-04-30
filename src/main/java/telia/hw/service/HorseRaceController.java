@@ -46,7 +46,7 @@ public class HorseRaceController {
     }
 
     @PostMapping("/bet")
-    @Operation(summary = "Add horses to race")
+    @Operation(summary = "Send race horses list, bet and race info to race")
     public RaceResultResponse putBetOnHorse(@RequestBody RaceAndBetRequest request) {
        return horseRaceService.putBetOnHorse(request);
     }

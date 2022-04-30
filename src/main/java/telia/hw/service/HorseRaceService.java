@@ -41,7 +41,6 @@ public class HorseRaceService {
         return horseService.findAllHorses();
     }
 
-
     public RaceResultResponse putBetOnHorse(RaceAndBetRequest request) {
        return raceService.putBetOnHorse(request);
     }

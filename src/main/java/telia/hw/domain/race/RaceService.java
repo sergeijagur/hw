@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 import telia.hw.domain.race_result.RaceResultResponse;
 import telia.hw.domain.race_result.RaceResultService;
 import telia.hw.service.RaceAndBetRequest;
+import telia.hw.validation.ValidationService;
 
 import javax.annotation.Resource;
 import java.util.*;
@@ -22,17 +23,21 @@ public class RaceService {
     @Resource
     private RaceResultService raceResultService;
 
+    @Resource
+    private ValidationService validationService;
+
 
 
     public Integer addNewRace(RaceInfoRequest request) {
-        raceRepository.save(raceMapper.raceInfoRequestToRace(request));
-        return raceRepository.findByNameAndDate(request.getName(), request.getDate()).getId();
+        Race savedRace = raceRepository.save(raceMapper.raceInfoRequestToRace(request));
+        return savedRace.getId();
     }
 
     public RaceResultResponse putBetOnHorse(RaceAndBetRequest request) {
         ArrayList <Integer> winners = getWinners(request);
         RaceResultResponse raceResultResponse = raceResultService.saveRaceResult(request, winners);
         Integer winner = winners.get(0);
+        validationService.betWins(request, winner);
 
         return raceResultResponse;
     }

@@ -2,11 +2,17 @@ package telia.hw.validation;
 
 import org.springframework.stereotype.Service;
 import telia.hw.infrastructure.exception.BusinessException;
-import telia.hw.infrastructure.exception.DataNotFoundException;
+import telia.hw.service.RaceAndBetRequest;
 
 
 @Service
 public class ValidationService {
+
+    public void betWins(RaceAndBetRequest request, Integer winner) {
+        if (!request.getBetOnHorseId().equals(winner)) {
+            throw new BusinessException("Your bet didn't win", "Try next time");
+        }
+    }
 //
 //    public static final String ACCOUNT_NOT_EXISTS = "Sellist kontot ei eksisteeri";
 //    public static final String DEPOSIT_OVER_LIMIT = "Deposiidi limiit on ületatud";

@@ -4,9 +4,7 @@ import org.mapstruct.*;
 
 @Mapper(unmappedTargetPolicy = ReportingPolicy.IGNORE, componentModel = "spring")
 public interface RaceMapper {
-//    @Mapping(source = "race.name", target = "raceName")
-//    @Mapping(source = "race.place", target = "racePlace")
-//    @Mapping(source = "race.date", target = "raceDate")
+
     Race raceInfoRequestToRace(RaceInfoRequest raceDto);
 
     @Mapping(source = "user.id", target = "userId")
