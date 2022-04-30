@@ -1,7 +1,6 @@
 package telia.hw.service;
 
 import org.springframework.stereotype.Service;
-import telia.hw.domain.horse.Horse;
 import telia.hw.domain.horse.HorseInfoRequest;
 import telia.hw.domain.horse.HorseInfoResponse;
 import telia.hw.domain.horse.HorseService;

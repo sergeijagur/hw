@@ -1,7 +1,7 @@
 package telia.hw.domain.race;
 
+import org.jetbrains.annotations.NotNull;
 import org.springframework.stereotype.Service;
-import telia.hw.domain.race_result.RaceResult;
 import telia.hw.domain.race_result.RaceResultResponse;
 import telia.hw.domain.race_result.RaceResultService;
 import telia.hw.service.RaceAndBetRequest;
@@ -19,7 +19,7 @@ public class RaceService {
     @Resource
     private RaceRepository raceRepository;
 
-    @Service
+    @Resource
     private RaceResultService raceResultService;
 
 
@@ -34,10 +34,11 @@ public class RaceService {
         RaceResultResponse raceResultResponse = raceResultService.saveRaceResult(request, winners);
         Integer winner = winners.get(0);
 
-        return raceResultService.ge;
+        return raceResultResponse;
     }
 
-    private ArrayList <Integer> getWinners(RaceAndBetRequest request) {
+    private @NotNull
+    ArrayList <Integer> getWinners(RaceAndBetRequest request) {
         ArrayList raceHorses = request.getRaceHorses();
         Random random = new Random();
         ArrayList<Integer> winnerIds = new ArrayList<>();
@@ -50,7 +51,5 @@ public class RaceService {
         return winnerIds;
     }
 
-    public Race findRaceById(Integer raceId) {
-        return findRaceById(raceId);
-    }
+
 }

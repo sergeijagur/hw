@@ -1,6 +1,7 @@
 package telia.hw.domain.race_result;
 
 import org.springframework.stereotype.Service;
+import telia.hw.domain.race.RaceRepository;
 import telia.hw.domain.race.RaceService;
 import telia.hw.service.RaceAndBetRequest;
 
@@ -11,7 +12,7 @@ import java.util.ArrayList;
 public class RaceResultService {
 
     @Resource
-    private RaceService raceService;
+    private RaceRepository raceRepository;
 
     @Resource
     private RaceResultRepository raceResultRepository;
@@ -25,11 +26,11 @@ public class RaceResultService {
         Integer secondPlace = winners.get(1);
         Integer thirdPlace = winners.get(2);
         RaceResult raceResult = new RaceResult();
-        raceResult.setRace(raceService.findRaceById(request.getRaceId()));
+        raceResult.setRace(raceRepository.getById(request.getRaceId()));
         raceResult.setWinnerHorseId(winner);
         raceResult.setSecondPlaceHorseId(secondPlace);
         raceResult.setThirdPlaceHorseId(thirdPlace);
         RaceResult savedRaceResult = raceResultRepository.save(raceResult);
-
+        return raceResultMapper.raceResultToRaceResultResponse(savedRaceResult);
     }
 }

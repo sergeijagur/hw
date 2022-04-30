@@ -2,7 +2,6 @@ package telia.hw.service;
 
 import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.web.bind.annotation.*;
-import telia.hw.domain.horse.Horse;
 import telia.hw.domain.horse.HorseInfoRequest;
 import telia.hw.domain.horse.HorseInfoResponse;
 import telia.hw.domain.race.RaceInfoRequest;

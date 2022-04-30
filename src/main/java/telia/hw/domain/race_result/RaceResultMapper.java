@@ -7,12 +7,12 @@ public interface RaceResultMapper {
     @Mapping(source = "raceName", target = "race.name")
     @Mapping(source = "racePlace", target = "race.place")
     @Mapping(source = "raceDate", target = "race.date")
-    RaceResult raceResultDtoToRaceResult(RaceResultDto raceResultDto);
+    RaceResult raceResultDtoToRaceResult(RaceResultResponse raceResultResponse);
 
     @InheritInverseConfiguration(name = "raceResultDtoToRaceResult")
-    RaceResultDto raceResultToRaceResultResponse(RaceResult raceResult);
+    RaceResultResponse raceResultToRaceResultResponse(RaceResult raceResult);
 
     @InheritConfiguration(name = "raceResultDtoToRaceResult")
     @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
-    void updateRaceResultFromRaceResultDto(RaceResultDto raceResultDto, @MappingTarget RaceResult raceResult);
+    void updateRaceResultFromRaceResultDto(RaceResultResponse raceResultResponse, @MappingTarget RaceResult raceResult);
 }
