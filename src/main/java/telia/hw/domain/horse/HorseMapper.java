@@ -2,6 +2,8 @@ package telia.hw.domain.horse;
 
 import org.mapstruct.*;
 
+import java.util.List;
+
 @Mapper(unmappedTargetPolicy = ReportingPolicy.IGNORE, componentModel = "spring")
 public interface HorseMapper {
     @Mapping(source = "userId", target = "user.id")
@@ -9,6 +11,8 @@ public interface HorseMapper {
 
     @Mapping(source = "user.id", target = "userId")
     HorseInfoRequest horseToHorseInfoRequest(Horse horse);
+
+    List <HorseInfoResponse> horsesToHorseResponses(List <Horse> horses);
 
     @Mapping(source = "userId", target = "user.id")
     @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)

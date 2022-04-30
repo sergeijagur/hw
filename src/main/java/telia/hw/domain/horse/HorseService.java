@@ -21,7 +21,6 @@ public class HorseService {
 
     public List<HorseInfoResponse> findAllHorses() {
         List<Horse> allHorses = horseRepository.findAll();
-        horseMapper.
-
+        return horseMapper.horsesToHorseResponses(allHorses);
     }
 }
