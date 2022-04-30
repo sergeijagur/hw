@@ -1,6 +1,7 @@
-package telia.hw.domain.horse;
+package telia.hw.service.horse;
 
 import org.springframework.stereotype.Service;
+import telia.hw.domain.horse.*;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -22,5 +23,10 @@ public class HorseService {
     public List<HorseInfoResponse> findAllHorses() {
         List<Horse> allHorses = horseRepository.findAll();
         return horseMapper.horsesToHorseResponses(allHorses);
+    }
+
+    public HorseInfoResponse getHorseById(Integer horseId) {
+        Horse horse = horseRepository.getById(horseId);
+       return horseMapper.horseToHorseResponse(horse);
     }
 }

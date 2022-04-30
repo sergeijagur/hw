@@ -1,6 +1,7 @@
 package telia.hw.domain.user;
 
 import org.mapstruct.*;
+import telia.hw.service.user.UserInfoRequest;
 
 @Mapper(unmappedTargetPolicy = ReportingPolicy.IGNORE, componentModel = "spring")
 public interface UserMapper {

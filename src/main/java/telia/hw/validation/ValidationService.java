@@ -1,8 +1,11 @@
 package telia.hw.validation;
 
 import org.springframework.stereotype.Service;
+import telia.hw.domain.user.User;
 import telia.hw.infrastructure.exception.BusinessException;
 import telia.hw.service.RaceAndBetRequest;
+
+import java.util.Optional;
 
 
 @Service
@@ -14,6 +17,18 @@ public class ValidationService {
         }
     }
 
+    public void usernameExists(Optional<User> existUser) {
+        if (existUser.isPresent()) {
+            throw new BusinessException("Username already in use", "Try another username");
+        }
+    }
+
+    public void isLogiOk(Optional<User> user) {
+        if (user.isEmpty()) {
+            throw new BusinessException("LogIn failed", "Control username or password or SignUp");
+        }
+
+    }
 
 
 //    public void accountExists(Integer accountId, Optional<Account> account) {

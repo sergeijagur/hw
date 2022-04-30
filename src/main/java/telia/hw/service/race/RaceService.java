@@ -1,9 +1,12 @@
-package telia.hw.domain.race;
+package telia.hw.service.race;
 
 import org.jetbrains.annotations.NotNull;
 import org.springframework.stereotype.Service;
-import telia.hw.domain.race_result.RaceResultResponse;
-import telia.hw.domain.race_result.RaceResultService;
+import telia.hw.domain.race.Race;
+import telia.hw.domain.race.RaceMapper;
+import telia.hw.domain.race.RaceRepository;
+import telia.hw.service.raceresults.RaceResultResponse;
+import telia.hw.service.raceresults.RaceResultService;
 import telia.hw.service.RaceAndBetRequest;
 import telia.hw.validation.ValidationService;
 
@@ -41,7 +44,6 @@ public class RaceService {
             raceResultResponse.setWin(true);
         }
 //        validationService.betWins(request, winner);
-
         return raceResultResponse;
     }
 

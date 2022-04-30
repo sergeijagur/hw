@@ -1,4 +1,4 @@
-package telia.hw.domain.user;
+package telia.hw.service.user;
 
 import lombok.Data;
 

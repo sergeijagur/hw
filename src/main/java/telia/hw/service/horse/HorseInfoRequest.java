@@ -1,12 +1,12 @@
-package telia.hw.domain.horse;
+package telia.hw.service.horse;
 
 import lombok.Data;
 
 import java.io.Serializable;
 
 @Data
-public class HorseInfoResponse implements Serializable {
-    private final Integer id;
+public class HorseInfoRequest implements Serializable {
+    private final Integer userId;
     private final String name;
     private final String color;
 }

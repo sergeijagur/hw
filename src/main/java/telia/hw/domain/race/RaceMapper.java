@@ -1,6 +1,7 @@
 package telia.hw.domain.race;
 
 import org.mapstruct.*;
+import telia.hw.service.race.RaceInfoRequest;
 
 @Mapper(unmappedTargetPolicy = ReportingPolicy.IGNORE, componentModel = "spring")
 public interface RaceMapper {

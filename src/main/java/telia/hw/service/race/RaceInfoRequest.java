@@ -1,4 +1,4 @@
-package telia.hw.domain.race;
+package telia.hw.service.race;
 
 import lombok.Data;
 

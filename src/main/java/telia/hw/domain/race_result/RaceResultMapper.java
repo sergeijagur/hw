@@ -1,6 +1,9 @@
 package telia.hw.domain.race_result;
 
 import org.mapstruct.*;
+import telia.hw.service.raceresults.RaceResultResponse;
+
+import java.util.List;
 
 @Mapper(unmappedTargetPolicy = ReportingPolicy.IGNORE, componentModel = "spring")
 public interface RaceResultMapper {
@@ -11,6 +14,8 @@ public interface RaceResultMapper {
 
     @InheritInverseConfiguration(name = "raceResultDtoToRaceResult")
     RaceResultResponse raceResultToRaceResultResponse(RaceResult raceResult);
+
+    List< RaceResultResponse> raceResultsToResponses(List <RaceResult> raceResult);
 
     @InheritConfiguration(name = "raceResultDtoToRaceResult")
     @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)

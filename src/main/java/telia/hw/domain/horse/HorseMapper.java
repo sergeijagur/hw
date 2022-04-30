@@ -1,6 +1,8 @@
 package telia.hw.domain.horse;
 
 import org.mapstruct.*;
+import telia.hw.service.horse.HorseInfoRequest;
+import telia.hw.service.horse.HorseInfoResponse;
 
 import java.util.List;
 
@@ -11,6 +13,8 @@ public interface HorseMapper {
 
     @Mapping(source = "user.id", target = "userId")
     HorseInfoRequest horseToHorseInfoRequest(Horse horse);
+
+    HorseInfoResponse horseToHorseResponse(Horse horse);
 
     List <HorseInfoResponse> horsesToHorseResponses(List <Horse> horses);
 
