@@ -5,8 +5,8 @@ import java.util.ArrayList;
 
 @Data
 public class RaceAndBetRequest {
-    private final Integer raceId;
-    private final Integer userId;
-    private final Integer betOnHorseId;
-    private final ArrayList raceHorses;
+    private Integer raceId;
+    private Integer userId;
+    private Integer betOnHorseId;
+    private ArrayList raceHorses;
 }

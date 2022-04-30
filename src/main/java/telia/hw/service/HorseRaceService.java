@@ -45,4 +45,8 @@ public class HorseRaceService {
     public Integer putBetOnHorse(RaceAndBetRequest request) {
         return raceService.putBetOnHorse(request);
     }
+
+    public void test(RaceAndBetRequest request) {
+        raceService.test(request);
+    }
 }

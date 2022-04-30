@@ -15,7 +15,7 @@ import java.util.List;
 
 
 @RestController
-@RequestMapping("/horse-race")
+@RequestMapping("/horserace")
 public class HorseRaceController {
 
     @Resource
@@ -46,11 +46,16 @@ public class HorseRaceController {
         return horseRaceService.findAllHorses();
     }
 
-    @PostMapping("/bet")
-    @Operation(summary = "Add horses to race")
-    public Integer putBetOnHorse(RaceAndBetRequest request) {
-        return horseRaceService.putBetOnHorse(request);
+    @PostMapping("/asd")
+    public void test(@RequestBody RaceAndBetRequest request) {
+        horseRaceService.test(request);
     }
+
+//    @PostMapping("/bet")
+//    @Operation(summary = "Add horses to race")
+//    public Integer putBetOnHorse(@RequestBody RaceAndBetRequest request) {
+//        return horseRaceService.putBetOnHorse(request);
+//    }
 
 
 
