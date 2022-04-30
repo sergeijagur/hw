@@ -13,17 +13,21 @@ public class ValidationService {
             throw new BusinessException("Your bet didn't win", "Try next time");
         }
     }
+
+
+
+//    public void accountExists(Integer accountId, Optional<Account> account) {
+//        if (account.isEmpty()) {
+//            throw new DataNotFoundException(ACCOUNT_NOT_EXISTS, "Kontot ID'ga " + accountId + " ei leitud");
+//        }
+//    }
 //
 //    public static final String ACCOUNT_NOT_EXISTS = "Sellist kontot ei eksisteeri";
 //    public static final String DEPOSIT_OVER_LIMIT = "Deposiidi limiit on ületatud";
 //    public static final String WITHDRAW_OVER_LIMIT = "Raha väljavõtmise limiit on ületatud";
 //    public static final String INSUFFICIENT_FUNDS = "Kontol pole piisavalt vahendeid tehingu sooritamiseks";
 //
-//    public void accountExists(Integer accountId, Optional<Account> account) {
-//        if (account.isEmpty()) {
-//            throw new DataNotFoundException(ACCOUNT_NOT_EXISTS, "Kontot ID'ga " + accountId + " ei leitud");
-//        }
-//    }
+
 //
 //    public void accountExists(String accountNumber, Optional<Account> account) {
 //        if (account.isEmpty()) {

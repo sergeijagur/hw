@@ -37,7 +37,10 @@ public class RaceService {
         ArrayList <Integer> winners = getWinners(request);
         RaceResultResponse raceResultResponse = raceResultService.saveRaceResult(request, winners);
         Integer winner = winners.get(0);
-        validationService.betWins(request, winner);
+        if (request.getBetOnHorseId().equals(winner)) {
+            raceResultResponse.setWin(true);
+        }
+//        validationService.betWins(request, winner);
 
         return raceResultResponse;
     }
