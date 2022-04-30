@@ -48,7 +48,7 @@ public class HorseRaceController {
 
     @PostMapping("/bet")
     @Operation(summary = "Add horses to race")
-    public Integer putBetOnHorse(@RequestBody RaceAndBetRequest request) {
+    public RaceResultResponse putBetOnHorse(@RequestBody RaceAndBetRequest request) {
        return horseRaceService.putBetOnHorse(request);
     }
 

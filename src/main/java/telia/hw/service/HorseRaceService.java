@@ -43,7 +43,7 @@ public class HorseRaceService {
     }
 
 
-    public Integer putBetOnHorse(RaceAndBetRequest request) {
+    public RaceResultResponse putBetOnHorse(RaceAndBetRequest request) {
        return raceService.putBetOnHorse(request);
     }
 }

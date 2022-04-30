@@ -1,6 +1,9 @@
 package telia.hw.domain.race;
 
 import org.springframework.stereotype.Service;
+import telia.hw.domain.race_result.RaceResult;
+import telia.hw.domain.race_result.RaceResultResponse;
+import telia.hw.domain.race_result.RaceResultService;
 import telia.hw.service.RaceAndBetRequest;
 
 import javax.annotation.Resource;
@@ -16,6 +19,9 @@ public class RaceService {
     @Resource
     private RaceRepository raceRepository;
 
+    @Service
+    private RaceResultService raceResultService;
+
 
 
     public Integer addNewRace(RaceInfoRequest request) {
@@ -23,7 +29,15 @@ public class RaceService {
         return raceRepository.findByNameAndDate(request.getName(), request.getDate()).getId();
     }
 
-    public Integer putBetOnHorse(RaceAndBetRequest request) {
+    public RaceResultResponse putBetOnHorse(RaceAndBetRequest request) {
+        ArrayList <Integer> winners = getWinners(request);
+        RaceResultResponse raceResultResponse = raceResultService.saveRaceResult(request, winners);
+        Integer winner = winners.get(0);
+
+        return raceResultService.ge;
+    }
+
+    private ArrayList <Integer> getWinners(RaceAndBetRequest request) {
         ArrayList raceHorses = request.getRaceHorses();
         Random random = new Random();
         ArrayList<Integer> winnerIds = new ArrayList<>();
@@ -33,11 +47,10 @@ public class RaceService {
             winnerIds.add(i, chosenId);
             raceHorses.remove(index);
         }
-        Integer winner = winnerIds.get(0);
-        Integer secondPlace = winnerIds.get(1);
-        Integer thirdPlace = winnerIds.get(2);
+        return winnerIds;
+    }
 
-
-        return winner;
+    public Race findRaceById(Integer raceId) {
+        return findRaceById(raceId);
     }
 }

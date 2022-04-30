@@ -10,7 +10,7 @@ public interface RaceResultMapper {
     RaceResult raceResultDtoToRaceResult(RaceResultDto raceResultDto);
 
     @InheritInverseConfiguration(name = "raceResultDtoToRaceResult")
-    RaceResultDto raceResultToRaceResultDto(RaceResult raceResult);
+    RaceResultDto raceResultToRaceResultResponse(RaceResult raceResult);
 
     @InheritConfiguration(name = "raceResultDtoToRaceResult")
     @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
