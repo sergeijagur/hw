@@ -4,8 +4,13 @@ import org.mapstruct.*;
 
 @Mapper(unmappedTargetPolicy = ReportingPolicy.IGNORE, componentModel = "spring")
 public interface RaceMapper {
+    @Mapping(source = "userId", target = "user.id")
+    Race raceInfoRequestToRace(RaceInfoRequest raceDto);
 
+    @Mapping(source = "user.id", target = "userId")
+    RaceInfoRequest raceToRaceDto(Race race);
 
-    Race raceInfoRequestToRace(RaceInfoRequest request);
-
+    @Mapping(source = "userId", target = "user.id")
+    @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
+    void updateRaceFromRaceDto(RaceInfoRequest raceDto, @MappingTarget Race race);
 }

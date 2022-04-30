@@ -14,7 +14,7 @@ public class HorseService {
     private HorseRepository horseRepository;
 
     public void addNewHorse(HorseInfoRequest request) {
-        Horse horse = horseMapper.horseInfoRequestToHorse(request);
+        Horse horse = horseMapper.horseDtoToHorse(request);
         horseRepository.save(horse);
     }
 }
