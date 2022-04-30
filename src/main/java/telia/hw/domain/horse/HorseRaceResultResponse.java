@@ -5,7 +5,7 @@ import lombok.Data;
 import java.io.Serializable;
 
 @Data
-public class RaceHorse implements Serializable {
+public class HorseRaceResultResponse implements Serializable {
     private final Integer id;
     private final String name;
     private final String color;

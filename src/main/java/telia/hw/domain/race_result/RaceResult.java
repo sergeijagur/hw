@@ -2,6 +2,9 @@ package telia.hw.domain.race_result;
 
 import lombok.Getter;
 import lombok.Setter;
+import telia.hw.domain.horse.Horse;
+import telia.hw.domain.horse.HorseInfoRequest;
+import telia.hw.domain.horse.HorseRaceResultResponse;
 import telia.hw.domain.race.Race;
 
 import javax.persistence.*;
@@ -20,22 +23,14 @@ public class RaceResult {
     @JoinColumn(name = "race_id", nullable = false)
     private Race race;
 
-/*
-  TODO [JPA Buddy] create field to map the 'winner' column
-   Available actions: Define target Java type | Uncomment as is | Remove column mapping
-  @Column(name = "winner", columnDefinition = "json not null")
-  private Object winner;
-*/
-/*
-  TODO [JPA Buddy] create field to map the 'second_place' column
-   Available actions: Define target Java type | Uncomment as is | Remove column mapping
-  @Column(name = "second_place", columnDefinition = "json not null")
-  private Object secondPlace;
-*/
-/*
-  TODO [JPA Buddy] create field to map the 'third_place' column
-   Available actions: Define target Java type | Uncomment as is | Remove column mapping
-  @Column(name = "third_place", columnDefinition = "json not null")
-  private Object thirdPlace;
-*/
+    @Column(name = "winner")
+    private HorseRaceResultResponse winner;
+
+    @Column(name = "second_place")
+    private HorseRaceResultResponse secondPlace;
+
+    @Column(name = "third_place")
+    private HorseRaceResultResponse thirdPlace;
+
+
 }

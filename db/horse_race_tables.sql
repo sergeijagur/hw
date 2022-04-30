@@ -1,19 +1,28 @@
 -- Created by Vertabelo (http://vertabelo.com)
--- Last modification date: 2022-04-28 16:53:48.145
+-- Last modification date: 2022-04-30 10:51:35.999
 
 -- tables
 -- Table: horse
 CREATE TABLE horse (
     id serial  NOT NULL,
-    race_id int  NULL,
+    user_id int  NOT NULL,
     name varchar(255)  NOT NULL,
     color varchar(255)  NOT NULL,
     CONSTRAINT horse_pk PRIMARY KEY (id)
 );
 
+-- Table: horse_race_result
+CREATE TABLE horse_race_result (
+    id serial  NOT NULL,
+    race_result_id int  NOT NULL,
+    horse_id int  NOT NULL,
+    CONSTRAINT horse_race_result_pk PRIMARY KEY (id)
+);
+
 -- Table: race
 CREATE TABLE race (
     id serial  NOT NULL,
+    user_id int  NOT NULL,
     name varchar(255)  NOT NULL,
     place varchar(255)  NOT NULL,
     date date  NOT NULL,
@@ -24,9 +33,9 @@ CREATE TABLE race (
 CREATE TABLE race_result (
     id serial  NOT NULL,
     race_id int  NOT NULL,
-    winner json  NOT NULL,
-    second_place json  NOT NULL,
-    third_place json  NOT NULL,
+    winner_horse_id int  NOT NULL,
+    second_place_horse_id int  NOT NULL,
+    third_place_horse_id int  NOT NULL,
     CONSTRAINT race_result_pk PRIMARY KEY (id)
 );
 
@@ -41,10 +50,26 @@ CREATE TABLE "user" (
 );
 
 -- foreign keys
--- Reference: horse_race (table: horse)
-ALTER TABLE horse ADD CONSTRAINT horse_race
-    FOREIGN KEY (race_id)
-    REFERENCES race (id)  
+-- Reference: horse_race_result_horse (table: horse_race_result)
+ALTER TABLE horse_race_result ADD CONSTRAINT horse_race_result_horse
+    FOREIGN KEY (horse_id)
+    REFERENCES horse (id)  
+    NOT DEFERRABLE 
+    INITIALLY IMMEDIATE
+;
+
+-- Reference: horse_race_result_race_result (table: horse_race_result)
+ALTER TABLE horse_race_result ADD CONSTRAINT horse_race_result_race_result
+    FOREIGN KEY (race_result_id)
+    REFERENCES race_result (id)  
+    NOT DEFERRABLE 
+    INITIALLY IMMEDIATE
+;
+
+-- Reference: horse_user (table: horse)
+ALTER TABLE horse ADD CONSTRAINT horse_user
+    FOREIGN KEY (user_id)
+    REFERENCES "user" (id)  
     NOT DEFERRABLE 
     INITIALLY IMMEDIATE
 ;
@@ -53,6 +78,14 @@ ALTER TABLE horse ADD CONSTRAINT horse_race
 ALTER TABLE race_result ADD CONSTRAINT race_result_race
     FOREIGN KEY (race_id)
     REFERENCES race (id)  
+    NOT DEFERRABLE 
+    INITIALLY IMMEDIATE
+;
+
+-- Reference: race_user (table: race)
+ALTER TABLE race ADD CONSTRAINT race_user
+    FOREIGN KEY (user_id)
+    REFERENCES "user" (id)  
     NOT DEFERRABLE 
     INITIALLY IMMEDIATE
 ;

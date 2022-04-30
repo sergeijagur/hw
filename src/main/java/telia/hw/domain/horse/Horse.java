@@ -16,10 +16,6 @@ public class Horse {
     @Column(name = "id", nullable = false)
     private Integer id;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "race_id")
-    private Race race;
-
     @Column(name = "name", nullable = false)
     private String name;
 
