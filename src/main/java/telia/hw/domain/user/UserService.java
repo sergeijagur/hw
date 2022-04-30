@@ -14,7 +14,7 @@ public class UserService {
     private UserRepository userRepository;
 
     public void addNewUser(UserInfoRequest request) {
-        User user = userMapper.requestInfoToUserInfo(request);
+        User user = userMapper.userInfoRequestToUser(request);
         userRepository.save(user);
     }
 }
