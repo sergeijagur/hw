@@ -11,8 +11,8 @@ public class RaceResultResponse implements Serializable {
     private String raceName;
     private String racePlace;
     private LocalDate raceDate;
-    private Integer winnerHorseId;
-    private Integer secondPlaceHorseId;
-    private Integer thirdPlaceHorseId;
+    private Integer winnerHorse;
+    private Integer secondPlaceHorse;
+    private Integer thirdPlaceHorse;
     private Boolean win = false;
 }

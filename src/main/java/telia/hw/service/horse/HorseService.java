@@ -37,4 +37,10 @@ public class HorseService {
         Horse horse = horseRepository.getById(horseId);
        return horseMapper.horseToHorseResponse(horse);
     }
+
+    public String findHorseInfoById(Integer horseId) {
+        Horse horse = horseRepository.getById(horseId);
+        return horse.getName() + horse.getColor();
+
+    }
 }

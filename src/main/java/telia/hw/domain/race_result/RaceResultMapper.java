@@ -15,7 +15,11 @@ public interface RaceResultMapper {
     @InheritInverseConfiguration(name = "raceResultDtoToRaceResult")
     RaceResultResponse raceResultToRaceResultResponse(RaceResult raceResult);
 
+
+
     List< RaceResultResponse> raceResultsToResponses(List <RaceResult> raceResult);
+
+
 
     @InheritConfiguration(name = "raceResultDtoToRaceResult")
     @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)

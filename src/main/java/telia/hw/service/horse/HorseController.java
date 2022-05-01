@@ -31,4 +31,10 @@ public class HorseController {
     public List<HorseInfoResponse> findAllHorses() {
         return horseService.findAllHorses();
     }
+
+    @GetMapping("/name-and-color")
+    @Operation(summary = "Find horse name and color by id")
+    public String findHorseInfoById(Integer horseId) {
+        return horseService.findHorseInfoById(horseId);
+    }
 }

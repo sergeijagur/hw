@@ -17,7 +17,7 @@ public class RaceResultController {
 
     @GetMapping("/all")
     @Operation(summary = "Find all race results")
-    public List<RaceResultResponse> findAllRaceResults() {
+    public List<ResultResponse> findAllRaceResults() {
         return raceResultService.findAllRaceResults();
     }
 
