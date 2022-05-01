@@ -22,8 +22,8 @@ public class HorseController {
 
     @PostMapping("/new-horse")
     @Operation(summary = "Add new horse")
-    public void addNewHorse(@RequestBody HorseInfoRequest request) {
-        horseService.addNewHorse(request);
+    public HorseInfoResponse addNewHorse(@RequestBody HorseInfoRequest request) {
+        return horseService.addNewHorse(request);
     }
 
     @GetMapping("/all-horses")

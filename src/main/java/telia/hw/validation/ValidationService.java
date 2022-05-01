@@ -1,6 +1,7 @@
 package telia.hw.validation;
 
 import org.springframework.stereotype.Service;
+import telia.hw.domain.horse.Horse;
 import telia.hw.domain.user.User;
 import telia.hw.infrastructure.exception.BusinessException;
 import telia.hw.service.RaceAndBetRequest;
@@ -28,6 +29,12 @@ public class ValidationService {
             throw new BusinessException("LogIn failed", "Control username or password or SignUp");
         }
 
+    }
+
+    public void horseNameExists(Optional<Horse> optionalHorse) {
+        if (optionalHorse.isPresent()) {
+            throw new BusinessException("Horse with this name already exists", "Try another name");
+        }
     }
 
 

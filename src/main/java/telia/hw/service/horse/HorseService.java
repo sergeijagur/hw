@@ -2,9 +2,11 @@ package telia.hw.service.horse;
 
 import org.springframework.stereotype.Service;
 import telia.hw.domain.horse.*;
+import telia.hw.validation.ValidationService;
 
 import javax.annotation.Resource;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class HorseService {
@@ -15,9 +17,15 @@ public class HorseService {
     @Resource
     private HorseRepository horseRepository;
 
-    public void addNewHorse(HorseInfoRequest request) {
+    @Resource
+    private ValidationService validationService;
+
+    public HorseInfoResponse addNewHorse(HorseInfoRequest request) {
+        Optional<Horse> optionalHorse = horseRepository.existsByName(request.getName());
+        validationService.horseNameExists(optionalHorse);
         Horse horse = horseMapper.horseInfoRequestToHorse(request);
-        horseRepository.save(horse);
+        Horse savedHorse = horseRepository.save(horse);
+        return horseMapper.horseToHorseResponse(savedHorse);
     }
 
     public List<HorseInfoResponse> findAllHorses() {
