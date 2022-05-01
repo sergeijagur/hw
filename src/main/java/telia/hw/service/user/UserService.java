@@ -4,7 +4,7 @@ import org.springframework.stereotype.Service;
 import telia.hw.domain.user.User;
 import telia.hw.domain.user.UserMapper;
 import telia.hw.domain.user.UserRepository;
-import telia.hw.service.user.UserInfoRequest;
+import telia.hw.service.login.LoginResponse;
 import telia.hw.validation.ValidationService;
 
 import javax.annotation.Resource;
@@ -22,17 +22,17 @@ public class UserService {
     @Resource
     private ValidationService validationService;
 
-    public void addNewUser(UserInfoRequest request) {
+    public LoginResponse addNewUser(UserInfoRequest request) {
         Optional<User> existUser = userRepository.existUsername(request.getUsername());
         validationService.usernameExists(existUser);
-
         User user = userMapper.userInfoRequestToUser(request);
-        userRepository.save(user);
+        User savedUser = userRepository.save(user);
+        return userMapper.userToLoginResponse(savedUser);
     }
 
-    public Integer logInControl(String username, String password) {
+    public LoginResponse logInControl(String username, String password) {
         Optional<User> user = userRepository.logInControl(username, password);
-        validationService.isLogiOk(user);
-        return user.get().getId();
+        validationService.isLoginOk(user);
+        return userMapper.userToLoginResponse(user.get());
     }
 }

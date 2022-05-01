@@ -19,7 +19,7 @@ public class LoginController {
 
     @GetMapping
     @Operation(summary = "Log in")
-    public Integer logIn(@RequestParam String username, @RequestParam String password) {
+    public LoginResponse logIn(@RequestParam String username, @RequestParam String password) {
         return loginService.logIn(username, password);
     }
 

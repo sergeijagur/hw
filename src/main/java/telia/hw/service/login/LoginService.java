@@ -13,7 +13,7 @@ public class LoginService {
     private UserService userService;
 
 
-    public Integer logIn(String username, String password) {
+    public LoginResponse logIn(String username, String password) {
         return userService.logInControl(username, password);
 
     }

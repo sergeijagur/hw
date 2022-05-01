@@ -23,7 +23,7 @@ public class ValidationService {
         }
     }
 
-    public void isLogiOk(Optional<User> user) {
+    public void isLoginOk(Optional<User> user) {
         if (user.isEmpty()) {
             throw new BusinessException("LogIn failed", "Control username or password or SignUp");
         }

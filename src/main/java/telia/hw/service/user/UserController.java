@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import telia.hw.service.login.LoginResponse;
 
 import javax.annotation.Resource;
 
@@ -17,6 +18,6 @@ public class UserController {
 
     @PostMapping("/new-user")
     @Operation(summary = "Add new user")
-    public void addNewUser(@RequestBody UserInfoRequest request) {userService.addNewUser(request);
+    public LoginResponse addNewUser(@RequestBody UserInfoRequest request) {return userService.addNewUser(request);
     }
 }
