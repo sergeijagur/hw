@@ -31,9 +31,9 @@ public class RaceService {
 
 
 
-    public Integer addNewRace(RaceInfoRequest request) {
+    public RaceInfoResponse addNewRace(RaceInfoRequest request) {
         Race savedRace = raceRepository.save(raceMapper.raceInfoRequestToRace(request));
-        return savedRace.getId();
+        return raceMapper.raceToResponse(savedRace);
     }
 
     public RaceResultResponse putBetOnHorse(RaceAndBetRequest request) {
