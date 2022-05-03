@@ -38,8 +38,9 @@ public class RaceResultService {
         raceResult.setWinnerHorseId(winner);
         raceResult.setSecondPlaceHorseId(secondPlace);
         raceResult.setThirdPlaceHorseId(thirdPlace);
-        RaceResult savedRaceResult = raceResultRepository.save(raceResult);
-        return raceResultMapper.raceResultToRaceResultResponse(savedRaceResult);
+//        RaceResult savedRaceResult =
+                raceResultRepository.save(raceResult);
+        return raceResultMapper.raceResultToRaceResultResponse(raceResult);
     }
 
     public List<ResultResponse> findAllRaceResults() {

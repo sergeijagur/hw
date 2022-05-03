@@ -19,6 +19,11 @@ public class HorseController {
         return horseService.getHorseById(horseId);
     }
 
+    @GetMapping("/user-id")
+    @Operation(summary = "Find horse by user id")
+    public List<HorseInfoResponse> getHorsesByUserId(Integer userId) {
+        return horseService.getHorsesByUserId(userId);
+    }
 
     @PostMapping("/new-horse")
     @Operation(summary = "Add new horse")

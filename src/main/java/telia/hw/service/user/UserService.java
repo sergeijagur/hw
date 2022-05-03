@@ -26,8 +26,8 @@ public class UserService {
         Optional<User> existUser = userRepository.existUsername(request.getUsername());
         validationService.usernameExists(existUser);
         User user = userMapper.userInfoRequestToUser(request);
-        User savedUser = userRepository.save(user);
-        return userMapper.userToLoginResponse(savedUser);
+        userRepository.save(user);
+        return userMapper.userToLoginResponse(user);
     }
 
     public LoginResponse logInControl(String username, String password) {

@@ -24,8 +24,8 @@ public class HorseService {
         Optional<Horse> optionalHorse = horseRepository.existsByName(request.getName());
         validationService.horseNameExists(optionalHorse);
         Horse horse = horseMapper.horseInfoRequestToHorse(request);
-        Horse savedHorse = horseRepository.save(horse);
-        return horseMapper.horseToHorseResponse(savedHorse);
+        horseRepository.save(horse);
+        return horseMapper.horseToHorseResponse(horse);
     }
 
     public List<HorseInfoResponse> findAllHorses() {
@@ -42,5 +42,10 @@ public class HorseService {
         Horse horse = horseRepository.getById(horseId);
         return horse.getName() + horse.getColor();
 
+    }
+
+    public List<HorseInfoResponse> getHorsesByUserId(Integer userId) {
+        List<Horse> horses = horseRepository.findByUserId(userId);
+        return horseMapper.horsesToHorseResponses(horses);
     }
 }
