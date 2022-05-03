@@ -5,6 +5,7 @@ import telia.hw.domain.horse.*;
 import telia.hw.validation.ValidationService;
 
 import javax.annotation.Resource;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -47,5 +48,20 @@ public class HorseService {
     public List<HorseInfoResponse> getHorsesByUserId(Integer userId) {
         List<Horse> horses = horseRepository.findByUserId(userId);
         return horseMapper.horsesToHorseResponses(horses);
+    }
+
+    public List<HorseInfoResponse> getRaceHorses(RaceHorsesRequest request) {
+        ArrayList<Integer> raceHorses = request.getRaceHorses();
+        ArrayList<HorseInfoResponse> responses = new ArrayList<>();
+        for (int i = 0; i < raceHorses.size(); i++) {
+            Integer id = raceHorses.get(i);
+            Horse horse = horseRepository.getById(id);
+            HorseInfoResponse response = new HorseInfoResponse();
+            response.setId(id);
+            response.setName(horse.getName());
+            response.setColor(horse.getColor());
+            responses.add(response);
+        }
+        return responses;
     }
 }
