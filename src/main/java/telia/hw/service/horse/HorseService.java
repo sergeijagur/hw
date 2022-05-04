@@ -41,7 +41,7 @@ public class HorseService {
 
     public String findHorseInfoById(Integer horseId) {
         Horse horse = horseRepository.getById(horseId);
-        return horse.getName() + horse.getColor();
+        return horse.getName() + " (" + horse.getColor() + ")";
 
     }
 
@@ -64,4 +64,5 @@ public class HorseService {
         }
         return responses;
     }
+
 }

@@ -26,10 +26,6 @@ public class RaceService {
     @Resource
     private RaceResultService raceResultService;
 
-    @Resource
-    private ValidationService validationService;
-
-
 
     public RaceInfoResponse addNewRace(RaceInfoRequest request) {
         Race savedRace = raceRepository.save(raceMapper.raceInfoRequestToRace(request));
@@ -43,7 +39,6 @@ public class RaceService {
         if (request.getBetOnHorseId().equals(winner)) {
             raceResultResponse.setWin(true);
         }
-//        validationService.betWins(request, winner);
         return raceResultResponse;
     }
 

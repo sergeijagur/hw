@@ -20,6 +20,7 @@ public class HorseController {
         return horseService.getHorseById(horseId);
     }
 
+
     @GetMapping("/user-id")
     @Operation(summary = "Find horse by user id")
     public List<HorseInfoResponse> getHorsesByUserId(@RequestParam Integer userId) {

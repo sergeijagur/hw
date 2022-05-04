@@ -8,10 +8,12 @@ import telia.hw.domain.race_result.RaceResultMapper;
 import telia.hw.domain.race_result.RaceResultRepository;
 import telia.hw.service.RaceAndBetRequest;
 import telia.hw.service.horse.HorseService;
+import telia.hw.validation.ValidationService;
 
 import javax.annotation.Resource;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class RaceResultService {
@@ -28,6 +30,9 @@ public class RaceResultService {
     @Resource
     private HorseService horseService;
 
+    @Resource
+    private ValidationService validationService;
+
 
     public RaceResultResponse saveRaceResult(RaceAndBetRequest request, ArrayList<Integer> winners) {
         Integer winner = winners.get(0);
@@ -38,8 +43,7 @@ public class RaceResultService {
         raceResult.setWinnerHorseId(winner);
         raceResult.setSecondPlaceHorseId(secondPlace);
         raceResult.setThirdPlaceHorseId(thirdPlace);
-//        RaceResult savedRaceResult =
-                raceResultRepository.save(raceResult);
+        raceResultRepository.save(raceResult);
         return raceResultMapper.raceResultToRaceResultResponse(raceResult);
     }
 
@@ -49,9 +53,19 @@ public class RaceResultService {
         return responseList;
     }
 
-    public RaceResultResponse findRaceResultById(Integer raceId) {
-        RaceResult raceResult = raceResultRepository.getById(raceId);
-        return raceResultMapper.raceResultToRaceResultResponse(raceResult);
+    public ResultResponse findRaceResultById(Integer raceId) {
+        Optional<RaceResult> raceResult = raceResultRepository.findByRaceId(raceId);
+        validationService.isValidRaceResult(raceResult);
+        ResultResponse response = new ResultResponse();
+        response.setId(raceResult.get().getId());
+        response.setRaceId(raceId);
+        response.setRaceName(raceResult.get().getRace().getName());
+        response.setRacePlace(raceResult.get().getRace().getPlace());
+        response.setRaceDate(raceResult.get().getRace().getDate());
+        response.setWinnerHorse(horseService.findHorseInfoById(raceResult.get().getWinnerHorseId()));
+        response.setSecondPlaceHorse(horseService.findHorseInfoById(raceResult.get().getSecondPlaceHorseId()));
+        response.setThirdPlaceHorse(horseService.findHorseInfoById(raceResult.get().getThirdPlaceHorseId()));
+        return response;
     }
 
     @NotNull

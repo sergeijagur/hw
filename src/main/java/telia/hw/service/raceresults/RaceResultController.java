@@ -23,7 +23,7 @@ public class RaceResultController {
 
     @GetMapping("/id")
     @Operation(summary = "Find race result by race id")
-    public RaceResultResponse findRaceResultById(Integer raceId) {
+    public ResultResponse findRaceResultById(Integer raceId) {
         return raceResultService.findRaceResultById(raceId);
     }
 }
