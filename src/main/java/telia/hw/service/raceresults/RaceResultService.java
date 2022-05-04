@@ -55,7 +55,6 @@ public class RaceResultService {
 
     public ResultResponse findRaceResultById(Integer raceId) {
         Optional<RaceResult> raceResult = raceResultRepository.findByRaceId(raceId);
-        validationService.isValidRaceResult(raceResult);
         ResultResponse response = new ResultResponse();
         response.setId(raceResult.get().getId());
         response.setRaceId(raceId);
@@ -68,6 +67,23 @@ public class RaceResultService {
         return response;
     }
 
+    public List<ResultResponse> findRaceResultsByUserId(Integer userId) {
+        List<ResultResponse> results = new ArrayList<>();
+        List<RaceResult> resultList = raceResultRepository.findByRaceUserId(userId);
+        for (RaceResult raceResult : resultList) {
+            ResultResponse response = new ResultResponse();
+            response.setId(raceResult.getId());
+            response.setRaceId(raceResult.getRace().getId());
+            response.setRaceName(raceResult.getRace().getName());
+            response.setRacePlace(raceResult.getRace().getPlace());
+            response.setRaceDate(raceResult.getRace().getDate());
+            response.setWinnerHorse(horseService.findHorseInfoById(raceResult.getWinnerHorseId()));
+            response.setSecondPlaceHorse(horseService.findHorseInfoById(raceResult.getSecondPlaceHorseId()));
+            response.setThirdPlaceHorse(horseService.findHorseInfoById(raceResult.getThirdPlaceHorseId()));
+            results.add(response);
+        }
+        return results;
+    }
     @NotNull
     private List<ResultResponse> getResultResponses(List<RaceResult> allRaceResults) {
         List<ResultResponse> responseList = new ArrayList<>();
@@ -85,4 +101,5 @@ public class RaceResultService {
         }
         return responseList;
     }
+
 }

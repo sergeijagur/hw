@@ -26,8 +26,13 @@ public class RaceService {
     @Resource
     private RaceResultService raceResultService;
 
+    @Resource
+    private ValidationService validationService;
+
 
     public RaceInfoResponse addNewRace(RaceInfoRequest request) {
+        Optional<Race> race = raceRepository.raceExist(request.getName(), request.getPlace(), request.getDate());
+        validationService.raceExist(race);
         Race savedRace = raceRepository.save(raceMapper.raceInfoRequestToRace(request));
         return raceMapper.raceToResponse(savedRace);
     }
@@ -55,6 +60,5 @@ public class RaceService {
         }
         return winnerIds;
     }
-
 
 }

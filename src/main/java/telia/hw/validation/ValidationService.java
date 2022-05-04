@@ -2,6 +2,7 @@ package telia.hw.validation;
 
 import org.springframework.stereotype.Service;
 import telia.hw.domain.horse.Horse;
+import telia.hw.domain.race.Race;
 import telia.hw.domain.race_result.RaceResult;
 import telia.hw.domain.user.User;
 import telia.hw.infrastructure.exception.BusinessException;
@@ -42,7 +43,19 @@ public class ValidationService {
 
     public void isValidRaceResult(Optional<RaceResult> raceResult) {
         if (raceResult.isEmpty()) {
-            throw new DataNotFoundException("Race result is not found", "Control race info");
+            throw new BusinessException("Race result not found", "Control data");
+        }
+    }
+
+    public void raceExist(Optional<Race> race) {
+        if (race.isPresent()) {
+            throw new BusinessException("The race already exists", "Control race info");
+        }
+    }
+
+    public void userResultsExist(Optional<RaceResult> controlResult) {
+        if (controlResult.isEmpty()) {
+            throw new BusinessException("Results were not found", "Play new games to get results");
         }
     }
 
