@@ -42,23 +42,6 @@ CREATE TABLE "user" (
     CONSTRAINT user_pk PRIMARY KEY (id)
 );
 
--- foreign keys
--- Reference: horse_race_result_horse (table: horse_race_result)
-ALTER TABLE horse_race_result ADD CONSTRAINT horse_race_result_horse
-    FOREIGN KEY (horse_id)
-    REFERENCES horse (id)  
-    NOT DEFERRABLE 
-    INITIALLY IMMEDIATE
-;
-
--- Reference: horse_race_result_race_result (table: horse_race_result)
-ALTER TABLE horse_race_result ADD CONSTRAINT horse_race_result_race_result
-    FOREIGN KEY (race_result_id)
-    REFERENCES race_result (id)  
-    NOT DEFERRABLE 
-    INITIALLY IMMEDIATE
-;
-
 -- Reference: horse_user (table: horse)
 ALTER TABLE horse ADD CONSTRAINT horse_user
     FOREIGN KEY (user_id)
