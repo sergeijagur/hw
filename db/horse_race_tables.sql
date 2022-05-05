@@ -11,13 +11,6 @@ CREATE TABLE horse (
     CONSTRAINT horse_pk PRIMARY KEY (id)
 );
 
--- Table: horse_race_result
-CREATE TABLE horse_race_result (
-    id serial  NOT NULL,
-    race_result_id int  NOT NULL,
-    horse_id int  NOT NULL,
-    CONSTRAINT horse_race_result_pk PRIMARY KEY (id)
-);
 
 -- Table: race
 CREATE TABLE race (
